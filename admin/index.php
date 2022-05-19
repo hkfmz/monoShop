@@ -1,6 +1,17 @@
 <?php
+session_start();
 
-  require("../config/commandes.php");
+require("../config/commandes.php");
+
+if(!isset($_SESSION['xRttpHo0greL39']))
+{
+    header("Location: ../login.php");
+}
+
+if(empty($_SESSION['xRttpHo0greL39']))
+{
+    header("Location: ../login.php");
+}
 
 ?>
 
@@ -15,14 +26,39 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="#">Administration</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="font-weight: bold;" aria-current="page" href="../admin/">Nouveau</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="supprimer.php">Suppression</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="destroy.php">Se deconnecter</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
   <div class="album py-5 bg-light">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      	
+
+      
 <form method="post">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Titre de l'image</label>
+    <label for="exampleInputEmail1" class="form-label">L'image du produit</label>
     <input type="name" class="form-control" name="image" required>
 
   </div>
