@@ -35,17 +35,19 @@ $Produits=afficher();
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="../admin/afficher.php">Produits</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../admin/">Nouveau</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" style="font-weight: bold;" href="supprimer.php">Suppression</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="destroy.php">Se deconnecter</a>
-        </li>
 
       </ul>
+
+      <a class="btn btn-danger d-flex" style="display: flex; justify-content: flex-end;" href="destroy.php">Se deconnecter</a>
 
     </div>
   </div>
