@@ -1,15 +1,15 @@
 <?php
-session_start();
+// session_start();
 
 include "config/commandes.php";
 
-if(isset($_SESSION['xRttpHo0greL39']))
-{
-    if(!empty($_SESSION['xRttpHo0greL39']))
-    {
-        header("Location: admin/afficher.php");
-    }
-}
+// if(isset($_SESSION['userxXJppk45hPGu']))
+// {
+//     if(!empty($_SESSION['userxXJppk45hPGu']))
+//     {
+//         header("Location: client/");
+//     }
+// }
 
 
 
@@ -35,7 +35,15 @@ if(isset($_SESSION['xRttpHo0greL39']))
 
         <form method="post">
             <div class="mb-3">
-                <label for="email" class="form-label">Login</label>
+                <label for="nom" class="form-label">Nom</label>
+                <input type="name" name="nom" class="form-control" style="width: 350%;" >
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prenom</label>
+                <input type="name" name="prenom" class="form-control" style="width: 350%;" >
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control" style="width: 350%;" >
             </div>
             <div class="mb-3">
@@ -43,7 +51,7 @@ if(isset($_SESSION['xRttpHo0greL39']))
                 <input type="password" name="motdepasse" class="form-control" style="width: 350%;">
             </div>
             <br>
-            <input type="submit" name="envoyer" class="btn btn-info" value="Se connecter">
+            <input type="submit" name="envoyer" class="btn btn-info" value="Envoyer">
         </form>
 
         </div>
@@ -57,18 +65,20 @@ if(isset($_SESSION['xRttpHo0greL39']))
 
 if(isset($_POST['envoyer']))
 {
-    if(!empty($_POST['email']) AND !empty($_POST['motdepasse']))
+    if(!empty($_POST['email']) AND !empty($_POST['motdepasse']) AND !empty($_POST['nom']) AND !empty($_POST['prenom']))
     {
-        $login = htmlspecialchars(strip_tags($_POST['email'])) ;
+        $email = htmlspecialchars(strip_tags($_POST['email'])) ;
         $motdepasse = htmlspecialchars(strip_tags($_POST['motdepasse']));
+        $nom = htmlspecialchars(strip_tags($_POST['nom']));
+        $prenom = htmlspecialchars(strip_tags($_POST['prenom']));
 
-        $admin = getAdmin($login, $motdepasse);
+        $user = ajouterUser($nom, $prenom, $email, $motdepasse);
 
-        if($admin){
-            $_SESSION['xRttpHo0greL39'] = $admin;
-            header('Location: admin/afficher.php');
-        }else{
+        if($user){
+            // $_SESSION['userxXJppk45hPGu'] = $user;
             header('Location: index.php');
+        }else{
+            echo "Compte non créer !";
         }
     }
 

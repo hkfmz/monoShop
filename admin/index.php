@@ -13,6 +13,12 @@ if(empty($_SESSION['xRttpHo0greL39']))
     header("Location: ../login.php");
 }
 
+
+foreach($_SESSION['xRttpHo0greL39'] as $i){
+  $nom = $i->pseudo;
+  $email = $i->email;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +26,8 @@ if(empty($_SESSION['xRttpHo0greL39']))
 <head>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-   
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 	<title></title>
 </head>
 <body>
@@ -45,6 +51,10 @@ if(empty($_SESSION['xRttpHo0greL39']))
         </li>
         
       </ul>
+      <div style="margin-right: 500px">
+        <h5 style="color: #545659; opacity: 0.5;">Connecté en tant que: <?= $nom ?></h5>
+      </div>
+      
       <a class="btn btn-danger d-flex" style="display: flex; justify-content: flex-end;" href="destroy.php">Se deconnecter</a>
     </div>
   </div>
@@ -102,6 +112,7 @@ if(empty($_SESSION['xRttpHo0greL39']))
           try 
           {
             ajouter($image, $nom, $prix, $desc);
+            header('Location: afficher.php');
           } 
           catch (Exception $e) 
           {

@@ -81,14 +81,14 @@ require("config/commandes.php");
       <?php foreach($Produits as $produit): ?> 
         <div class="col">
           <div class="card shadow-sm">
-            <title><?= $produit->nom ?></title>
+            <h3><?= $produit->nom ?></h3>
             <img src="<?= $produit->image ?>" style="width: 24%">
 
             <div class="card-body">
-              <p class="card-text"><?= substr($produit->description, 0, 200); ?></p>
+              <p class="card-text"><?= substr($produit->description, 0, 160); ?>...</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-success">Commander</button>
+                  <a href="produit.php?pdt=<?= $produit->id ?>"><button type="button" class="btn btn-sm btn-success">Voir plus</button></a>
                 </div>
                 <small class="text" style="font-weight: bold;"><?= $produit->prix ?> €</small>
               </div>
